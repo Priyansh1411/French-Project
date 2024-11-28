@@ -1,50 +1,40 @@
 import { useState } from "react";
 
 export default function Quiz() {
-  const [isCorrect, setIsCorrect] = useState(null);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const correctAnswer = "1914";
 
   const handleAnswer = (answer) => {
-    setIsCorrect(answer === "correct");
+    setSelectedAnswer(answer);
   };
 
   return (
     <div className="p-4 bg-gray-800 text-white rounded-md shadow-md">
-      <h3 className="text-lg font-bold">Question: En quelle année a commencé la Première Guerre mondiale ?</h3>
-      <div className="mt-4 grid grid-cols-2 gap-4">
-        <button
-          className={`py-2 px-4 rounded-md ${
-            isCorrect === null
-              ? "bg-gray-800"
-              : isCorrect
-              ? "bg-green-500"
-              : "bg-red-500"
-          }`}
-          onClick={() => handleAnswer("correct")}
-        >
-          1914
-        </button>
-        <button
-          className="py-2 px-4 bg-gray-800 text-white rounded-md"
-          onClick={() => handleAnswer("wrong")}
-        >
-          1916
-        </button>
-        <button
-          className="py-2 px-4 bg-gray-800 text-white rounded-md"
-          onClick={() => handleAnswer("wrong")}
-        >
-          1947
-        </button>
-        <button
-          className="py-2 px-4 bg-gray-800 text-white rounded-md"
-          onClick={() => handleAnswer("wrong")}
-        >
-          1932
-        </button>
+      <h3 className="text-lg font-bold">
+        Question: En quelle année a commencé la Première Guerre mondiale ?
+      </h3>
+      <div className="mt-4 flex flex-wrap gap-4">
+        {["1914", "1947", "1916", "1932"].map((answer, index) => (
+          <button
+            key={index}
+            className={`py-2 px-4 rounded-md transition-all duration-300 ${
+              selectedAnswer === answer
+                ? answer === correctAnswer
+                  ? "bg-green-500 text-white"
+                  : "bg-red-500 text-white"
+                : "bg-gray-700 hover:bg-gray-600 text-white"
+            }`}
+            onClick={() => handleAnswer(answer)}
+          >
+            {answer}
+          </button>
+        ))}
       </div>
-      {isCorrect !== null && (
+      {selectedAnswer !== null && (
         <p className="mt-4">
-          {isCorrect ? "Correct! La Première Guerre mondiale a commencé en 1914." : "Faux! Essayer à nouveau."}
+          {selectedAnswer === correctAnswer
+            ? "Correct ! WW1 a commencé en 1914."
+            : "Faux ! Essayez à nouveau."}
         </p>
       )}
     </div>
