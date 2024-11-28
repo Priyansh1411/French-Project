@@ -18,7 +18,7 @@ export default function Home() {
           La France pendant la Première et la Seconde Guerre mondiale
         </h1>
         <p className="text-lg mt-3 text-gray-300">
-          Découvrez les moments charnières de l'histoire de France.
+          Découvrez les moments charnières de l&apos;histoire de France.
         </p>
       </header>
 
