@@ -1,5 +1,9 @@
-import "@/styles/globals.css";
+// pages/_app.js
+import "../styles/globals.css"; // Import your global styles
+import "leaflet/dist/leaflet.css"; // Import Leaflet styles for the map
 
-export default function App({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
+
+export default MyApp;
